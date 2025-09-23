@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<!--
+ **********************************************************
+
+             TUFTS CS 117 HOMEWORK ASSIGNMENT
+
+        Fill in your name, e-mail and answers to questions
+        in the sections provided below.
+
+          All questions are marked up: <li class="q">
+          All answers are marked up:   <li class="a">
+
+
+     PLEASE DO NOT MODIFY ANY THING OTHER THAN THE 
+     NAME, E-MAIL, AND ANSWER FIELDS (you may also add
+     css declarations in the <head> if you need them,
+     but usually you won't.
+
+ **********************************************************
+-->
+
+
+<html lang="en">
+<head>
+<meta charset="utf-8"> 
+<title>Questions for: Tufts CS 117 Assignment Reading Assignment &#8212; End to End Arguments</title>
+<link rel="stylesheet" type="text/css" href="https://www.cs.tufts.edu/comp/117/style/homework.css" >
+</head>
+
+<body class="homework">
+
+
+<!-- ******************************************************
+	   YOU MUST FILL IN YOUR NAME, UTLN AND EMAIL BELOW!!
+         (You may copy this from an earlier assignment
+                         if you like)
+
+     ****************************************************** -->
+
+
+<div class="student">
+<p>
+<span class="label">Student name: </span>
+Jay Choudhary
+<br>
+
+<span class="label">LOGIN: </span>
+jchoud02
+<br>
+
+<span class="label">E-mail: </span>
+<!-- DON'T FORGET UP UPDATE THE MAILTO: URI BELOW ALONG WITH
+     YOUR EMAIL IN THE ANCHOR.  IT SHOULD LOOK LIKE:
+ <a href="mailto:lady.gaga@cs.tufts.edu">lady.gaga@cs.tufts.edu</a>
+--> 
+
+<a href="mailto:jay.choudhary@tufts.edu">jay.choudhary@tufts.edu</a>
+<br>
+</p>
+</div>
+
+
+
+
+
+<div class="UpperLeftHeader">
+<p>Tufts CS 117 (Fall 2025):
+<br>
+Internet-scale Distributed Systems
+</p>
+</div>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - -
+		HOMEWORK TITLE
+  - -  - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<div class="headerdiv">
+<h1>
+Tufts CS 117 Assignment:<br>End-to-end Arguments
+<br>
+Questions
+</h1>
+</div>
+
+<!-- ******************************************************
+
+              PLEASE ANSWER QUESTIONS IN THE SECTIONS
+	      LABELED class="a" (for answer)
+
+     ****************************************************** -->
+
+
+
+<div class="main">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - -
+		QUESTION
+  - -  - - - - - - - - - - - - - - - - - - - - - - -->
+ <div class="qa">
+<p>You are welcome to write as much as you like, but this is not intended to be a very time-consuming assignment.  In most cases, each question can be answered in one or a few sentences, but it is essential that you demonstrate strong understanding. Try to get to the essence quickly. If you want to provide supporting detail, that's fine too.</p>
+<p>
+  Note that the end-to-end paper discusses, starting in its abstract, an end-to-end <em>design principle</em>, and many of these questions are about that principle. Make sure you understand what the principle is before attempting to answer these questions. Indeed, it's worth returning to the abstract after you've read the whole paper, but the abstract emphasizes only some of what's important. We will also discuss the principle in detail in class, and you may update your answers after that discussion.  Indeed, don't worry if there are a few questions that you don't know how to answer at all  until after the class discussion.
+</p>
+
+<ol class="qa">
+<li class="q">
+Briefly summarize the "end-to-end" principle in your own words. Why does it matter? In what situations is it applicable? What does it say about the pros and cons of doing other sorts of checking and recovery (I.e. other than end-to-end)?  For full credit it must be clear when checking is required, when it's optional, and why.
+</li>
+<li class="a">
+The "end-to-end" principle states that certain functions in a system should be placed upward in a layered system , at the endpoints of a system.
+Function placement matters because the function in placement can only be correctly and completely implemented with the requirements of the application at the endpoints in mind.
+It is applicable in situations such as file transfer , data encryption ,duplicate message suppression.
+Other forms of low level functions such as checking and recovery can improve performance in the case of careful file transfer by potentially reducing the number of retries required 
+but is not a substitute for end to end checksum ,which ensures correctness . If the probability of errors /packet loss is very low , then adding low level functions decreases performance by increasing the overhead.
+
+
+</li>
+
+<li class="q">The end-to-end paper describes a situation at MIT in which end-to-end checking was not done, and
+the result was a system that did not work well enough. What was the problem, and how would more attention to
+the end-to-end argument have helped?
+</li>
+<li class="a">The problem at MIT was that application programmers assumed that the primary threat to correct data transmission was corruption of 
+     bits during transmission. The problem turned out to be that data was unprotected in a gateway and was being corrupted in storage .
+     This issue could have been caught earlier if the end-to-end principle was applied and a checksum had been computed at the client and server endpoints.
+
+</li>
+
+<li class="q">The end-to-end principle discusses the impact of various design choices on system <em>correctness</em>. What are the implications of attention to the end-to-end <em>principle</em> for system performance? Briefly discuss.</li>
+<li class="a">In some cases ,system performance can be negatively impacted by the absence of lower level functions that have checks . As the paper says , when 
+      there is a file transfer system that drops a message 1percent of the time , the time to complete the file transfer grows exponentially with the length of the file 
+      if only end to end checks are present . 
+</li>
+<li class="q">If a networking system with multiple "hops" does error checking and recovery on some of the individual links, does that violate the end-to-end principle? <em>Briefly</em> explain why or why not. Remember: this question is not asking whether such checking is ever a good idea (though you might want to comment on that too), this question is asking what the <em>principle</em> says, if anything, about such checking.</li>
+<li class="a">The principle implies that while such error checking and recovery does not violate the principle , it does not ensure correctness. </li>
+
+<li class="q">Do systems designed with attention to the end-to-end principle tend to be simpler or more complex, I.e. compared to otherwise similar systems designed without attention to the principle? Briefly discuss.</li>
+<li class="a">Systems designed with attention to the end-to-end principle tend to be simpler since
+           they rely less on complicated lower level mechanisms for correctness but on simpler checks and retry mechanisms at the endpoints.
+</li>
+
+<li class="q">Consider the postal system. Letters are typically addressed, mailed and delivered without
+explicit acknowledgement. How, if at all,
+does the "end-to-end" argument apply to the postal system?</li>
+<li class="a">
+     Generally ,there is nothing to verify for at the receiving end of a letter in terms of content correctness.,
+     The only verification required at the receiving end is whether it was directed to you or not and if the seal is intact, or 
+     in the case of sensitive documents , if the no of documents listed are the ones received.
+     But in the case of informal letters , there is no verification required at the receiving end.
+     So , the end to end principle can be said to partly apply to the postal system.
+</li>
+
+
+<li class="q">Paul Baran explains why packet switching could not have
+been successful in an all-analog world. Why was digital messaging a
+necessary pre-requisite for the adoption of packet switching? Be
+specific.</li>
+
+<li class="a"> 
+In order to build network that could handle high bandwidth , it had to be digital because analog links were limited and could not repeat signals well enough.
+With digital, a message can be cleaned up and reconstructed and sent through many repeaters without loss of quality.
+Hence digital messaging was necessary prerequisite for packet switching as it allowed for packets to be reconstructed and sent through different routes if one route was down.
+</li>
+
+<li class="q">What reason does Baran give why packet switching can
+make a network achieve similar performance at less cost than a
+circuit-switched network?</li>
+
+<li class="a">Packet switching allows for a similar performance at less cost than a circuit switched network because
+     it allows for redundant connections . In a circuit switched network , both endpoints need to be of high quality , i.e. the components need 
+     to be highly reliable which is expensive. In a packet switched network, a reliable network can be build out of cheaper , unreliable components 
+     as there are many paths for packets to reach the destination.
+</li>
+
+<li class="q">What reaction did Baran get from the experts at AT&amp;T when he proposed packet-switching? Why?</li>
+<li class="a">The reaction Baran got from experts at AT&amp;T was one of disbelief . They thought Baran did not know what he was talking about.
+     They had a mental block and didn't understand digital. Both older and younger folks did not understand digital. 
+</li> 
+
+<li class="q">Why did or didn't Baran seek patents on his work?</li>
+<li class="a">He did not seek patents on his work. It would have gotten in the way of people using it.</li>
+
+<li class="q">(optional: for fun not credit) What efforts were made to keep this technology secret from the "enemy" in the Soviet Union? Why?</li>
+<li class="a">They actually did not want to keep the technology secrret from the enemy and actually made efforts to spread information
+     about this technology across various labs /universities. They wanted the enemy to know that they had this technology and hence they could
+     retaliate if needed . Hence they sought to neutralize or caution the enemy from attacking by showing the enemy their potential for a counter attack.
+</li>
+
+
+
+</ol>
+
+</div>
+</div>
+</body>
+</html>

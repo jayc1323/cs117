@@ -1,0 +1,121 @@
+HTTP/1.1 200 OK
+Date: Fri, 19 Sep 2025 14:47:36 GMT
+Server: Apache/2.4.62 (Red Hat Enterprise Linux) OpenSSL/3.0.7 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 19 Sep 2025 14:45:22 GMT
+ETag: "d86-63f2884fc3351"
+Accept-Ranges: bytes
+Content-Length: 3462
+Content-Type: text/html; charset=UTF-8
+Strict-Transport-Security: max-age=15552000
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Homework html CS117</title>
+        <link id="theme-link" rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+      
+        <h1><em>Football club I support</em></h1>
+        <p>
+            <div id = 'pic'>
+            <h2><a href="https://www.arsenal.com/"><span class ="title">Arsenal FC</span></a></h2>
+                <a href="https://www.arsenal.com/">
+                        <img src="Arsenal_FC.png" alt="Arsenal FC logo" >
+                    </a>
+            <div class ='button'>
+                <button id="theme-toggle">Switch Theme</button>
+
+            </div>
+            </div>
+        <div class = 'content'>
+            <h2>About</h2>
+            The Arsenal Football Club is a professional football club based in Islington, North London, England. They compete in the Premier League, the top tier of English football. In domestic football, Arsenal have won 13 league titles (including one unbeaten title), a record 14 FA Cups, 2 League Cups, 17 FA Community Shields and a Football League Centenary Trophy. In European football, 
+            they have won one European Cup Winners' Cup and one Inter-Cities Fairs Cup. 
+            In terms of trophies won, it is the third-most successful club in English football.
+            <br>
+         In the 2003-04 season , Arsenal won the Premier League title without
+            losing a single match under <strong>Arsene Wenger</strong> and were dubbed <em><strong>The Invincibles</strong></em>, a feat which 
+        has not been achieved by any team in the history of the premier league. 
+
+        </div>
+       </p>
+       
+        <br>
+        <p>
+            <div class = "content">
+            <h2><a href ="https://www.transfermarkt.com/arsenal-fc/transferrekorde/verein/11">Most Expensive Signings</a></h2>
+            <ol>
+                <li class="li">Declan Rice- $140 million</li>
+                <li class="li">Nicolas Pepe - $96 million</li>
+                <li class="li">Kai Havertz - $90 million</li>
+                <li class="li">Martin Zubimendi - $84 million</li>
+                <li class="li">Eberechi Eze - $83 million</li>
+                <li class="li">Victor Gyokeres - $80 million</li>
+            </ol>
+            </div>
+        </p>
+        <br>
+        <p>
+       
+         <table>
+
+  <thead>
+    <tr>
+      <th scope="col">Trophy</th>
+      <th scope="col">Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">FA Cup</th>
+     
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th scope="row">FA Cup</th>
+      
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th scope="row">FA Cup</th>
+     
+      <td>2014</td>
+    </tr>
+    <tr>
+      <th scope="row">Premier League</th>
+    
+      <td>2004</td>
+    </tr>
+      <tr>
+      <th scope="row">Premier League</th>
+    
+      <td>2002</td>
+    </tr>
+      <tr>
+      <th scope="row">Premier League</th>
+    
+      <td>1998</td>
+    </tr>
+
+       
+    
+
+  </tbody>
+   <caption>
+           <span class ="span">Recent Major Trophies won</span>
+        </caption>
+
+</table>
+
+        </p>
+    <script>
+            document.getElementById('theme-toggle').onclick = function() {
+            var link = document.getElementById('theme-link');
+            var current = link.getAttribute('href');
+            link.setAttribute('href', current === 'styles.css' ? 'styles2.css' : 'styles.css');
+            };
+            </script>
+    </body>
+
+</html>

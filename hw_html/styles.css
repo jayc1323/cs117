@@ -1,0 +1,80 @@
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4); 
+  z-index: -1;
+}
+#pic {
+   text-align: center;
+}
+
+span.title {
+    font-size: xx-large;
+    color: rgb(243, 242, 240);
+    text-emphasis: bold;
+    
+}
+
+span.span {
+    font-size: x-large;
+    color: rgb(243, 242, 240);
+    background-color: rgba(0,0,0,0.4);
+    padding: 5px;
+    border-radius: 10px;
+}
+body {
+    background-image: url("emirates.jpg") ;
+    background-size: normal;
+    background-blend-mode: color-dodge;
+    color: beige;
+    font-size: medium;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+div.content {
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: justify;
+    text-justify: inter-word;
+    border-width: 3cm;
+    border-color: bisque;
+    background-color: rgba(143, 132, 132, 0.212);
+   
+}
+
+h1 {
+    text-align: center;
+    font-size: xx-large;
+    font-family : 'Helvetica Neue', sans-serif;
+}
+
+a{
+    color : rgb(240, 236, 236);
+}
+a:visited {
+  color: rgb(224, 215, 215);
+}
+a:hover {
+  color: rgb(209, 76, 76);
+  -webkit-text-fill-color: red;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  border: 2px solid #333;
+  font-size: large;
+  background-color: rgba(30,30,30,0.7);
+}
+
+th, td {
+  border: 1px solid #333;
+  padding: 8px 12px;
+}
+
+li.li{
+    margin: 5px 0;
+    list-style: disc;
+}
+

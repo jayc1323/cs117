@@ -1,0 +1,4 @@
+- Submitting around 11 hr late . 
+- I had the site up and running on the server prior to the deadline but completing the response form
+  took up more time than I thought it would and also had to correct errors in html after 
+  finding errors during validation so decided to submit this in the morning after instead.
