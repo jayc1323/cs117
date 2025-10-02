@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!-- 
+ **********************************************************
+
+             TUFTS CS 117 HOMEWORK ASSIGNMENT
+
+        Fill in your name, e-mail and answers to questions
+        in the sections provided below.
+
+          All questions are marked up: <li class="q">
+          All answers are marked up:   <li class="a">
+
+
+     PLEASE DO NOT MODIFY ANY THING OTHER THAN THE 
+     NAME, E-MAIL, AND ANSWER FIELDS (you may also add
+     css declarations in the <head> if you need them,
+     but usually you won't.
+
+ **********************************************************
+ -->
+
+
+<html lang="en">
+<head>
+<meta charset="utf-8"> 
+<title>Tufts CS 117 Assignment &#8212; Ping demonstration program</title>
+<link rel="stylesheet" type="text/css" href="https://www.cs.tufts.edu/comp/117/style/homework.css" >
+</head>
+
+<body class="homework">
+
+
+<!-- ******************************************************
+	   YOU MUST FILL IN YOUR NAME, UTLN AND EMAIL BELOW!!
+         (You may copy this from an earlier assignment
+                         if you like)
+
+     ****************************************************** -->
+
+
+<div class="student">
+<p>
+<span class="label">Student name: </span>
+Jay Choudhary 
+<br>
+
+<span class="label">LOGIN: </span>
+jchoud02 
+<br>
+
+<span class="label">E-mail: </span>
+<!-- DON'T FORGET UP UPDATE THE MAILTO: URI BELOW ALONG WITH
+     YOUR EMAIL IN THE ANCHOR.  IT SHOULD LOOK LIKE:
+ <a href="mailto:lady.gaga@cs.tufts.edu">lady.gaga@cs.tufts.edu</a>
+--> 
+
+<a href="mailto:jay.choudhary@tufts.edu">jay.choudhary@tufts.edu</a>
+<br>
+</p>
+</div>
+
+
+
+
+<div class="UpperLeftHeader">
+<p>Tufts CS 117 (Fall 2025):
+<br>
+Internet-scale Distributed Systems
+</p>
+</div>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - -
+		HOMEWORK TITLE
+  - -  - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<div class="headerdiv">
+<h1>
+Tufts CS 117 Assignment<br>Ping demonstration program
+<br>
+Questions
+</h1>
+</div>
+
+<!-- ******************************************************
+
+              PLEASE ANSWER QUESTIONS IN THE SECTIONS
+	      LABELED class="a" (for answer)
+
+     ****************************************************** -->
+
+
+
+
+<div class="main">
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - -
+		QUESTION
+  - -  - - - - - - - - - - - - - - - - - - - - - - -->
+<div class="qa">
+
+<ol class="qa">
+<li class="q">Why did more client output result when you added the loop
+to read extra messages after each successful message receipt? Why
+were some messages never printed? Why were some printed late and out
+of order?</li>
+<li class="a">
+Looking at the server log and the client log , the server is configured to delay respones and drop packets randomly,
+leading to packets arriving out of order , timeouts occuring on client side leading to retries and also receiving duplicate respones from the server for older messages.
+</li>
+
+<li class="q">What was confusing about this assignment or 
+programming framework that we should
+explain in more detail before proceeding to the next assignment?</li>
+<li class="a">
+ The instructions were detailed and clear enough and not confusing .
+</li>
+
+
+<li class="q">How much UDP (datagram) style programming did you already know before doing this assignment?</li>
+<li class="a">
+I had some experience building a UDP file transfer reliability protocol through an assignment in CS112. 
+</li>
+
+</ol>
+</div>
+</div>
+</body>
+</html>

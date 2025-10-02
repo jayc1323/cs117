@@ -41,11 +41,11 @@
 <div class="student">
 <p>
 <span class="label">Student name: </span>
-YOUR-NAME-HERE
+Jay Choudhary
 <br>
 
 <span class="label">LOGIN: </span>
-YOUR-CS-DEPT-LOGIN-HERE
+jchoud02
 <br>
 
 <span class="label">E-mail: </span>
@@ -54,7 +54,7 @@ YOUR-CS-DEPT-LOGIN-HERE
  <a href="mailto:lady.gaga@cs.tufts.edu">lady.gaga@cs.tufts.edu</a>
 --> 
 
-<a href="mailto:YOUR-EMAIL-HERE">YOUR-EMAIL-HERE</a>
+<a href="mailto:jay.choudhary@tufts.edu">jay.choudhary@tufts.edu</a>
 <br>
 </p>
 </div>
@@ -109,11 +109,16 @@ specifications, which of the following statements is/are <em>definitely true</em
 
 <ol class="qa">
 <li class="q">The example URI above is a reference to an HTML document? Briefly explain.</li>
-<li class="a">...answer definitely/maybe/definitely-not...and briefly explain...</li>
+<li class="a">Maybe a reference to an HTML document . The metadata of a url <em>does not guarantee</em> that the resource obtained will indeed have the expected MIME type as indicated by the URL.</li>
 <li class="q">The example URI is absolute? Briefly explain.</li>
-<li class="a">...your answer here...</li>
+<li class="a">Yes , the example URI is absolute as it matches the absolute URI rule since it does not have a fragment identifier component.
+     4.3 Absolute URI :  absolute-URI  = scheme ":" hier-part [ "?" query ]
+</li>
 <li class="q">If you do an HTTP GET on the example URI from anywhere in the world, you will get the same thing? Which principle that we studied does this illustrate? Briefly explain.</li>
-<li class="a">...briefly explain why or why not, and which principle is illustrated...</li>
+<li class="a">Yes , you will get the same thing if we do an HTTP GET on the example URI from anywhere in the world. 
+     The principle that illustrates this is the principle that global naming leads to global network effects. <br>
+     <code>http://example.com/homepage.html</code> is a global URI and global URIs resolve the same way everywhere in the world.
+</li>
 </ol>
 
 </li>
@@ -126,9 +131,16 @@ According to TAG Finding <a href="https://www.w3.org/2001/tag/doc/metaDataInURI-
 <ol class="qa">
 <li class="q">The Web page you get should
 be about discounts on shoes? (Yes or no? Briefly explain.)</li>
-<li class="a">...your answer here...</li>
+<li class="a">
+     No , it shouldn't necessarily be about discounts on shoes. There is no constraint made by w3 that constrains the resource 
+     a URI references to necessarily align with the metadata , but is generally good practise to have some meaning about the resource be inferred from the URI.
+
+</li>
 <li class="q">Again according to the finding, if you change the URI to read <code>http://greatdeals.com/discounts?item=gloves</code>, any Web page you get should be about discounts on gloves? (Yes or no? Briefly explain.)</li>
-<li class="a">...your answer here...</li>
+<li class="a">No ,this is an inference made by users that altering the parameters of the metadata should result in a similar page with discount for a different item.
+     The resource the user expects to find is not even guaranteed to exist , and even if it does , the URI for it is not guarranteed to follow the same pattern unless explicitly stated by the host/authority of the URI.
+
+</li>
 </ol>
 </li>
 
@@ -138,13 +150,15 @@ According to the ABNF in <a href="https://datatracker.ietf.org/doc/html/rfc3986"
 
 <ol class="qa">
 <li class="q">The nonterminal (rule) that matches <code>http</code> is?</li>
-<li class="a">...your answer here...</li>
+<li class="a"> scheme= ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )</li>
 <li class="q">The nonterminal that matches <code>lat=42.408724&amp;long=-71.116179</code> is?</li>
-<li class="a">...your answer here...</li>
+<li class="a"> query = *( pchar / "/" / "?" )</li>
 <li class="q">True or false, the URI has a <code>hier-part</code>? If so, what is it? If not why not.</li>
-<li class="a">If true, then which part of the URI is the <code>hier-part</code>?</li>
+<li class="a">If true, then which part of the URI is the <code>hier-part</code>?
+  True , the hier-part is "example.com"</li>
 <li class="q">True or false, the URI has a <code>path</code>?  If so, what is it? If not why not.</li>
-<li class="a">If true, then which part of the URI is the <code>path</code>?</li>
+<li class="a">If true, then which part of the URI is the <code>path</code>?
+  Yes , the URI does have a path . The path is /maps?lat=42.408724&long=-71.116179</li>
 </ol>
 
 </li>

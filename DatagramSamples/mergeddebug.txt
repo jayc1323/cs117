@@ -1,0 +1,16 @@
+
+09/27/2025 18:09:13.929675 ./pingserver:     Creating C150NastyDgmSocket(nastiness=0)
+09/27/2025 18:09:13.935461 ./pingserver:     Ready to accept messages
+09/27/2025 18:09:35.013377 ./pingclient: Creating C150DgmSocket
+09/27/2025 18:09:35.079912 ./pingclient: ./pingclient: Writing message: "Ping"
+09/27/2025 18:09:35.079943 ./pingclient: C150DgmSocket::write: attempting to send packet with len=5 |Ping.|
+09/27/2025 18:09:35.079979 ./pingclient: C150DgmSocket::write: Success writing packet with len=5 |Ping.|
+09/27/2025 18:09:35.079995 ./pingclient: ./pingclient: Returned from write, doing read()
+09/27/2025 18:09:35.080406 ./pingserver:     C150DgmSocket::read: successful read with len=5 |Ping.|
+09/27/2025 18:09:35.080453 ./pingserver:     C150NastyDgmSocket::read: delivering packet of length 5 |Ping.|
+09/27/2025 18:09:35.080472 ./pingserver:     Successfully read 5 bytes. Message="Ping"
+09/27/2025 18:09:35.080503 ./pingserver:     Responding with message="You said Ping and I say PONG. Thank you for playing!"
+09/27/2025 18:09:35.080531 ./pingserver:     C150DgmSocket::write: attempting to send packet with len=53 |You said Ping and I say PONG. Thank you for playing!.|
+09/27/2025 18:09:35.080615 ./pingserver:     C150DgmSocket::write: Success writing packet with len=53 |You said Ping and I say PONG. Thank you for playing!.|
+09/27/2025 18:09:35.080755 ./pingclient: C150DgmSocket::read: successful read with len=53 |You said Ping and I say PONG. Thank you for playing!.|
+09/27/2025 18:09:35.080771 ./pingclient: PRINTING RESPONSE: Response received is "You said Ping and I say PONG. Thank you for playing!"
