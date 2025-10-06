@@ -73,7 +73,7 @@ main(int argc, char *argv[]) {
   //
   
   GRADEME(argc, argv);
-
+  
   //
   // Check command line and parse arguments
   //
@@ -89,7 +89,7 @@ main(int argc, char *argv[]) {
   }
 
   nastiness = atoi(argv[1]);   // convert command line string to integer
-
+   *GRADING << "Nastiness is " << nastiness << endl;
   //
   // Make sure source and target dirs exist
   //

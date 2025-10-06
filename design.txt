@@ -1,0 +1,74 @@
+FileCopy Design 
+Jay Choudhary
+
+
+Current End to End checking protocol : 
+ -> Defined a Packet Struct in endtoendPacket.cpp
+    enum PacketType { INITIATE, SHA, CONFIRM };
+
+        struct Packet {
+            PacketType type;
+            char filename[256];
+            char content[21];
+
+            Packet(PacketType t, const char* fname, const char* cont) {
+                type = t;
+                strncpy(filename, fname, sizeof(filename));
+                filename[sizeof(filename)-1] = '\0';
+                strncpy(content, cont, sizeof(content));
+                content[sizeof(content)-1] = '\0';
+                
+            }
+        }__attribute__((packed));
+    
+-> Structs with the packed attribute can be casted to a char* and sent over the network
+   and parsed into the same struct on the other end easily .
+-> This ensures the packet type on either end is the same and helps to validate the packet
+   easily by comparing the Packets based on their PacketType , which makes rejecting unexpected packets easier.
+-> Current end to end protocol is : 
+   Timeouts enabled on both client and server sockets with retries on either end accounting for out of order,
+   duplicate packets ,delays.
+
+   1) Client initiates by sending a packet with type INITIATE and the filename.
+   2) Server responds with a packet type SHA with the correct filename and SHA in the content field.
+   3) Client validates the incoming packet for correct filename and packet type and
+      compares SHA and responds with content "SUCCESS" or "FAIL"
+   4) Server validates the incoming packet for correct filename and type and responds 
+      with a CONFIRM Packet and the correct filename .
+   5 ) The Client , after receiving the correct expected type and filename in the packet,
+       declares the end to end check for that file as completed.
+
+-> Current end to end check status : Works correctly for network nastiness = 0 ,reporting failing 
+                                    files (when TARGET is populated with nastyfiletest with nastiness > 0)
+                                    and all files passing end to end with nastiness = 0 while populating 
+                                    TARGET with nastyfiletest.
+                                    Needs some adjustments in case of higher levels of nastiness ,
+                                    encountering packets with length != packetSize which I did not expect 
+                                    as either a packet would be delivered with content not altered or not delivered,
+                                    so would need to check what is going on in this case as I only send packets
+                                    with a fixed size - size of the defined Packet struct .
+
+
+FileCopy Protocol :- 
+- High Level Idea is to use a variant of a Go Back N protocol where N is the window size (number of file packets sent at a time).
+- As end to end check and FileCopy packets could overlap , I plan to add some more fields to my Packet Struct 
+  as metadata - indicating whether a packet is part of a File Transfer or End to End Check and also a Packet number within a file transfer.
+- The client divides the file into equal sized packets except for the last one and initiates the file transfer ,
+  informing the server of the number of packets to expect for that file.
+- It transfers packets in batches of N (A parameter that would need to be tuned) to avoid overwhelming the server,
+  and only transfers the next batch after receiving acknowledgement from the server for the last packet no sent.
+- The client keeps track of the current window and slides it forward when it's received the acknowledgement , if it receives
+  a certain no of duplicate acknowledgements or times out waiting , it resends the window of packets again.
+- The end to end checking for the file begins after the last packet has been sent , with retries for the file transfer in case
+  of failure . ( Upto 5 times).
+- As the server can receive out of order packets/duplicates , it can begin buffering up a new file if it knows how many packets to expect
+  or reject if the initial message to begin for that file was not received . 
+- If it receives end to end check packets for files that do not have a .tmp suffix , it can reject those as file
+  transfer for those files is declared complete .(successfully /unsuccessfully)
+- This design can handle cases in which packets arrive out of order as since the content of a packet has the same
+  size and packet no is known , the server can compute the offset write out of order packets to the correct byte offset 
+  in the file .
+- I feel this design also makes good use of the end to end principle by not using overly sophisticated mechanisms
+  to ensure correctness of each packet sent but only the entire file , and uses limited retries .
+- The error and recovery mechanisms are not parameterized by either file/network nastiness , as required .
+- I think this design addresses most major concerns of the FileCopy assignment.

@@ -1,0 +1,9 @@
+Student : Jay Choudhary 
+
+- I have some reasons why my submission is late.
+- I went to RacketCon on Saturday Oct 4 , which lasted the entire day and couldn't find much time to work later.
+- I had a working version of the end to end protocol for nastiness = 0 before the deadline but
+  I decided to have it more modular/readable and that refactoring took up a lot of time.
+- I'm working on my own , which adds more work .
+- Debugging issues like Gradelog not having any logging for either file or server while print and cs150 Debugging
+  suggests the program does handle end to end checking for nastiness = 0.
