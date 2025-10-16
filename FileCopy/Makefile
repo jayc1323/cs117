@@ -52,6 +52,8 @@ all: nastyfiletest makedatafile sha1test fileclient fileserver
 nastyfiletest: nastyfiletest.cpp  $(C150AR) $(INCLUDES)
 	$(CPP) -o nastyfiletest  $(CPPFLAGS) nastyfiletest.cpp $(C150AR)
 
+packet: packets.cpp  $(C150AR) $(INCLUDES)
+	$(CPP) -o packet  $(CPPFLAGS) packets.cpp $(C150AR)
 #
 # Build the sha1test
 #
@@ -64,12 +66,12 @@ sha1test: sha1test.cpp
 makedatafile: makedatafile.cpp
 	$(CPP) -o makedatafile makedatafile.cpp 
 
-fileclient: fileclient.cpp endToendPacket.cpp $(C150AR) $(INCLUDES)
-	$(CPP) -o fileclient $(CPPFLAGS) fileclient.cpp endToendPacket.cpp $(C150AR) -lssl -lcrypto
+fileclient: fileclient.cpp packets.cpp $(C150AR) $(INCLUDES)
+	$(CPP) -o fileclient $(CPPFLAGS) fileclient.cpp packets.cpp $(C150AR) -lssl -lcrypto
 
 
-fileserver: fileserver.cpp endToendPacket.cpp $(C150AR) $(INCLUDES)
-	$(CPP) -o fileserver $(CPPFLAGS) fileserver.cpp endToendPacket.cpp $(C150AR) -lssl -lcrypto
+fileserver: fileserver.cpp packets.cpp $(C150AR) $(INCLUDES)
+	$(CPP) -o fileserver $(CPPFLAGS) fileserver.cpp packets.cpp $(C150AR) -lssl -lcrypto
 #
 # To get any .o, compile the corresponding .cpp
 #
@@ -83,5 +85,7 @@ fileserver: fileserver.cpp endToendPacket.cpp $(C150AR) $(INCLUDES)
 
 clean:
 	 rm -f nastyfiletest sha1test makedatafile fileclient fileserver *.o 
+	 rm -f TARGET/*  
+	 rm -f *.txt
 
 
